@@ -54,11 +54,11 @@ Types: `Funds`, `Spends`, `Points`.
   - **Output Spending**
   ```
   MATCH (txo:Transaction)
-  WHERE txo.id = 'transaction-id'
+  WHERE txo.id = {transactionId}
   SET txo.lock = true
   WITH txo
-  WHERE NOT (txo)<-[:Spends {id:'output-id'}]-()
-  CREATE UNIQUE (txo)<-[:Spends {id: 'output-id'}]-(txn:Transaction)
+  WHERE NOT (txo)<-[:Spends {id:{outputId}}]-()
+  CREATE UNIQUE (txo)<-[:Spends {id: {outputId}}]-(txn:Transaction)
   REMOVE txo.lock
   RETURN txo, txn
   ```
