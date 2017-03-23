@@ -1,0 +1,29 @@
+{
+  "name": "@webwallet/graphstore",
+  "version": "0.1.0",
+  "description": "WebWallet Graphstore microservice for transaction clearing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/webwallet/graphstore.git"
+  },
+  "keywords": [
+    "transactions",
+    "clearing",
+    "graph",
+    "neo4j"
+  ],
+  "author": "webwallet.org",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webwallet/graphstore/issues"
+  },
+  "homepage": "https://github.com/webwallet/graphstore#readme",
+  "dependencies": {
+    "neo4j-driver": "^1.1.1",
+    "require-directory": "^2.1.1"
+  }
+}
