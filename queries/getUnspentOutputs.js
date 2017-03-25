@@ -2,9 +2,9 @@
 
 const query = `
   match (address:Address {id: {address}})
-  with address
-  match (address)-[outputs:Outputs]-(outputsIndex)-[pointer:Unspent]-(transaction)
-  where outputs.id={currency} or outputs.default
+  with address, {currencies} as currencies
+  match (address)-[index:Outputs]-(outputsIndex)-[pointer:Unspent]-(transaction)
+  where index.id in currencies or index.default and length(currencies)=0
   return collect(transaction.id + '::' + pointer.id) as transactions
 `
 
