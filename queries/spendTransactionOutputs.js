@@ -5,16 +5,16 @@ const query = `
   with spender, range(0, size({outputs})) as outputsRange
   unwind outputsRange as i
   with spender, toString(i) as outputPosition, {outputs}[i] as output
-  match (address:Address)-[:Outputs]->(outputsIndex)
-    -[pointer:Unspent]->(spendee:Transaction)
-  where address.id=output.address and
-    (spendee.id + '::' + pointer.id) in output.previous
+  match (address:Address)-[index:Outputs]->(outputsIndex)
+  where address.id=output.address and index.id=output.currency
+  merge (spender)<-[:Points {id: outputPosition}]-(outputsIndex)
+  merge (spender)<-[:Unspent {id: outputPosition}]-(outputsIndex)
+  with address, spender, outputsIndex, output
+  match (outputsIndex)-[pointer:Unspent]->(spendee:Transaction)
+  where (spendee.id + '::' + pointer.id) in output.previous
   create (spender)-[:Spends {id: pointer.id}]->(spendee)
-  create (spender)<-[:Points {id: outputPosition}]-(outputsIndex)
-  create (spender)<-[:Unspent {id: outputPosition}]-(outputsIndex)
   delete pointer
-  with address.id as address, output.previous as previous
-  return address, previous
+  return address.id as address, output.previous as previous
 `
 
 module.exports = {
