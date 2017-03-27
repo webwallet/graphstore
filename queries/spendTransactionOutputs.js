@@ -2,7 +2,10 @@
 
 const query = `
   create (spender:Transaction {id: {id}})
-  with spender, range(0, size({outputs})) as outputsRange
+  with spender
+  unwind {inputs} as input
+  merge (iou:IOU {id: input})-[:Funds]->(spender)
+  with spender, range(0, size({outputs})) as outputsRange, collect(iou) as ious
   unwind outputsRange as i
   with spender, toString(i) as outputPosition, {outputs}[i] as output
   match (address:Address)-[index:Outputs]->(outputsIndex)
