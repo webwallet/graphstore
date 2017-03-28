@@ -15,9 +15,12 @@ const query = `
   with address, spender, outputsIndex, output
   match (outputsIndex)-[pointer:Unspent]->(spendee:Transaction)
   where (spendee.id + '::' + pointer.id) in output.previous
+  and not (spendee)<-[:Spends {id: pointer.id}]-()
   create (spender)-[:Spends {id: pointer.id}]->(spendee)
   delete pointer
-  return address.id as address, output.previous as previous
+  with collect(output) as outputs, output.previous as previous,
+  address.id as address, output.currency as currency
+  return address, currency, previous
 `
 
 module.exports = {
@@ -25,6 +28,7 @@ module.exports = {
   parser(result) {
     return {
       address: result.get('address'),
+      currency: result.get('currency'),
       previous: result.get('previous')
     }
   }
