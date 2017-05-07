@@ -1,6 +1,8 @@
 'use strict'
 
-const library = require('./lib').neo4j
-const queries = require('./queries')
+const database = require('./lib/database')
 
-module.exports = queries
+module.exports = {
+  //api,
+  database
+}
