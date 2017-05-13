@@ -4,6 +4,7 @@
   "description": "WebWallet Graphstore microservice for transaction clearing.",
   "main": "index.js",
   "scripts": {
+    "preinstall": "node scripts/symlink",
     "test": "npm test"
   },
   "repository": {
