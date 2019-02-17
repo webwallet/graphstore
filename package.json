@@ -4,7 +4,6 @@
   "description": "WebWallet Graphstore microservice for transaction clearing.",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node scripts/symlink",
     "test": "npm test"
   },
   "repository": {
@@ -24,7 +23,7 @@
   },
   "homepage": "https://github.com/webwallet/graphstore#readme",
   "dependencies": {
-    "neo4j-driver": "^1.3.0",
+    "neo4j-driver": "^1.7.2",
     "require-directory": "^2.1.1"
   }
 }
