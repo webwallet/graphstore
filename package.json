@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/webwallet/graphstore#readme",
   "dependencies": {
-    "neo4j-driver": "^1.7.2",
+    "neo4j-driver": "^1.7.4",
     "require-directory": "^2.1.1"
   }
 }
