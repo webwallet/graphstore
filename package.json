@@ -1,6 +1,6 @@
 {
   "name": "@webwallet/graphstore",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Graph database queries and connection handling.",
   "main": "index.js",
   "scripts": {
