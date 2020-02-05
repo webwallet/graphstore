@@ -1,7 +1,7 @@
 {
   "name": "@webwallet/graphstore",
-  "version": "0.3.2",
-  "description": "WebWallet Graphstore microservice for transaction clearing.",
+  "version": "0.3.3",
+  "description": "Graph database queries and connection handling.",
   "main": "index.js",
   "scripts": {
     "test": "npm test"
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/webwallet/graphstore#readme",
   "dependencies": {
-    "neo4j-driver": "^1.7.4",
+    "neo4j-driver": "^1.7.6",
     "require-directory": "^2.1.1"
   }
 }
